@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 5648;
 
 const authRouter = require("./routes/auth.routes");
 const v1Router = require("./routes/v1.route.");
+const routerV2 = require("./routes/v2.routes");
+
 // const rentRouter = require("./routes/rent");
 
 const notFoundHandler = require("./error-handlers/404.js");
@@ -29,6 +31,8 @@ app.use(express.json());
 
 app.use(authRouter);
 app.use("/api/v1", v1Router);
+app.use("/api/v2", routerV2);
+
 // app.use(rentRouter);
 
 app.get("/erro", (req, res) => {
