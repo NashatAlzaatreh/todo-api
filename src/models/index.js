@@ -6,6 +6,9 @@ const profileModel = require("../models/profileModel");
 const listModel = require("./listModel");
 const settingModel = require("./setting");
 const Collection = require("../models/data-collection");
+// store
+const categoriesModel = require("./categories");
+const productsModel = require("./products");
 
 const { Sequelize, DataTypes } = require("sequelize");
 
@@ -28,8 +31,10 @@ const sequelize = new Sequelize(DATABASE_URL, sequelizeOptions);
 
 const list = listModel(sequelize, DataTypes);
 const setting = settingModel(sequelize, DataTypes);
-
 const profile = profileModel(sequelize, DataTypes);
+// store
+const categories = categoriesModel(sequelize, DataTypes);
+const products = productsModel(sequelize, DataTypes);
 
 module.exports = {
   db: sequelize,
@@ -37,4 +42,6 @@ module.exports = {
   list: new Collection(list),
   setting: new Collection(setting),
   profile: new Collection(profile),
+  categories: new Collection(categories),
+  products: new Collection(products),
 };
